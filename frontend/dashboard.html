@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - LinkVault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <h1 class="logo">Link<span>Vault</span></h1>
+
+    <button class="logout" onclick="logout()">Logout</button>
+
+    <div class="form-card">
+      <input type="text" id="title" placeholder="Enter title">
+      <input type="text" id="url" placeholder="Enter URL">
+      <button onclick="addLink()">Save Link</button>
+    </div>
+
+    <h2>Your Links</h2>
+    <div id="links"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

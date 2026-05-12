@@ -1,0 +1,194 @@
+
+PUT http://localhost:5000/api/links/fOl0GvOHJvs
+Content-Type: application/json
+
+{
+  "title": "Google Updated",
+  "url": "https://google.com"
+}
+
+ito ang frontend ko 
+
+
+this is my app.js
+
+const API = "http://localhost:5000/api/links";
+const AUTH = "http://localhost:5000/api/auth";
+
+/* =========================
+   UI HELPERS
+========================= */
+
+function showLoader() {
+  document.getElementById("loader").classList.remove("hidden");
+}
+
+function hideLoader() {
+  document.getElementById("loader").classList.add("hidden");
+}
+
+function showAlert(message, type = "success") {
+  const box = document.getElementById("alertBox");
+  box.textContent = message;
+  box.className = `alert ${type}`;
+  box.classList.remove("hidden");
+
+  setTimeout(() => box.classList.add("hidden"), 2500);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showLogin() {
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("linkApp").classList.add("hidden");
+}
+
+function showRegister() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.remove("hidden");
+  document.getElementById("linkApp").classList.add("hidden");
+}
+
+function showLinks() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("linkApp").classList.remove("hidden");
+  loadLinks();
+}
+
+/* =========================
+   REGISTER
+========================= */
+
+async function register() {
+  showLoader();
+
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
+
+  const res = await fetch(`${AUTH}/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  hideLoader();
+
+  if (res.ok) {
+    showAlert("Account created!", "success");
+    showLogin();
+  } else {
+    showAlert(data.message, "error");
+  }
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+async function login() {
+  showLoader();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  const res = await fetch(`${AUTH}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  hideLoader();
+
+  if (res.ok) {
+    localStorage.setItem("token", data.token);
+    showAlert("Login successful!", "success");
+    showLinks();
+  } else {
+    showAlert(data.message, "error");
+  }
+}
+
+/* =========================
+   LOAD LINKS
+========================= */
+
+async function loadLinks() {
+  const res = await fetch(API);
+  const links = await res.json();
+
+  const container = document.getElementById("links");
+  container.innerHTML = "";
+
+  links.forEach(link => {
+    container.innerHTML += `
+      <div class="link-card">
+        <h3>${link.title}</h3>
+        <a href="${link.url}" target="_blank">${link.url}</a>
+
+        <div class="actions">
+          <button class="delete" onclick="deleteLink('${link.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* =========================
+   ADD LINK
+========================= */
+
+async function addLink() {
+  showLoader();
+
+  const title = document.getElementById("title").value;
+  const url = document.getElementById("url").value;
+
+  await fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, url })
+  });
+
+  hideLoader();
+  showAlert("Link saved!", "success");
+
+  loadLinks();
+}
+
+/* =========================
+   DELETE LINK
+========================= */
+
+async function deleteLink(id) {
+  showLoader();
+
+  await fetch(`${API}/${id}`, { method: "DELETE" });
+
+  hideLoader();
+  showAlert("Link deleted!", "success");
+
+  loadLinks();
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+  localStorage.removeItem("token");
+  showLogin();
+}
+
+/* =========================
+   INIT
+========================= */
+
+showLogin();

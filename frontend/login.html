@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - LinkVault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-container">
+
+    <h1>🔐 Login</h1>
+
+    <!-- EMAIL -->
+    <input type="email" id="email" placeholder="Email" autocomplete="username">
+
+    <!-- PASSWORD WITH TOGGLE -->
+    <div class="password-box">
+      <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+      <span id="toggleIcon" onclick="togglePassword('loginPassword', this)">👁️</span>
+    </div>
+
+    <!-- MESSAGE BOX (added) -->
+    <p id="message" style="color:red; font-size:14px;"></p>
+
+    <!-- LOGIN BUTTON -->
+    <button id="loginBtn" onclick="login()">Login</button>
+
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+
+  </div>
+
+  <script src="auth.js"></script>
+
+  <!-- OPTIONAL UI SCRIPT -->
+  <script>
+    // focus email on load
+    window.onload = () => {
+      document.getElementById("email").focus();
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register - LinkVault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="auth-container">
+
+    <h1>📝 Create Account</h1>
+
+    <!-- SOCIAL LOGIN -->
+    <button class="google-btn">🔵 Continue with Google</button>
+    <button class="github-btn">⚫ Continue with GitHub</button>
+
+    <!-- DIVIDER -->
+    <div class="divider">OR SIGN UP WITH EMAIL</div>
+
+    <!-- EMAIL -->
+    <input type="email" id="email" placeholder="Email">
+
+    <!-- PASSWORD -->
+    <div class="password-box">
+      <input type="password" id="regPassword" placeholder="Password">
+      <span onclick="togglePassword('regPassword', this)">👁️</span>
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="password-box">
+      <input type="password" id="confirmPassword" placeholder="Confirm Password">
+      <span onclick="togglePassword('confirmPassword', this)">👁️</span>
+    </div>
+
+    <!-- MESSAGE -->
+    <p id="message" style="color:#ef4444; font-size:14px;"></p>
+
+    <!-- REGISTER BUTTON -->
+    <button onclick="register()">Create Account</button>
+
+    <p>
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+
+  </div>
+
+  <script src="auth.js"></script>
+
+</body>
+</html>

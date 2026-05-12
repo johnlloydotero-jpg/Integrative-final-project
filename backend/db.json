@@ -1,0 +1,224 @@
+{
+  "users": [
+    {
+      "email": "johnlloyd.otero@dorsu.edu.ph",
+      "password": "$2b$10$l.v84EK8937aLzdusCdY3.7r2kzfA0Z0KYvLN.mf.yXie8MAYTW3m",
+      "id": "1778115662966"
+    },
+    {
+      "email": "punto12@gmail.com",
+      "password": "$2b$10$t9wSOyPLzgweOwRU7gw25e1qvAXcF123nBrfp3Jwx2P535IPNno6i",
+      "id": "1778116001439"
+    },
+    {
+      "email": "asaphildefonso@gmail.com",
+      "password": "$2b$10$Fpa3br1ZWVvptlE35Ma0..je2lvSr.ZVs2ObFb16MZ5gzz.518CXG",
+      "id": "1778116528656"
+    },
+    {
+      "email": "ricklorenz@gmail.com",
+      "password": "$2b$10$9L7ik4d8Z5.WH1b1ZiOd6eyBtwT.6eHwgN0Y98cpCax.4ZgOUhwBy",
+      "id": "1778122525711"
+    },
+    {
+      "email": "johnlloydotero123@gmail.com",
+      "password": "$2b$10$8w2QDqfZ4X4EF5OhxTCme.zctu3TBKvsKOoEnRNfw7IXeCuihVXTW",
+      "id": "1778129544303"
+    },
+    {
+      "email": "luna@gmail.com",
+      "password": "$2b$10$HdhoksCKuUoD/akahsDmVOHtlls3e7ECSGhfO06V9xMTYDweplvHa",
+      "id": "1778144036807"
+    },
+    {
+      "email": "ricklorenzperez@gmail.com",
+      "password": "$2b$10$2t10So7qbFBHlE1a8ZUM0u4jtK9tyD5YlQyp8Gis/lGnUhaRfcKWW",
+      "id": "1778149158603"
+    },
+    {
+      "email": "herbie@gmail.com",
+      "password": "$2b$10$v7dOv8SbbK7OhdKgDXLoH.V5tNS7A1OWOrZKbsiixQMe4hzemyMSq",
+      "id": "1778377967495"
+    },
+    {
+      "email": "",
+      "password": "$2b$10$Kjhd6ynEw/61M70E9/ESceO7ZoWzpjvvryrdi2PvHL8VQHdPebK3m",
+      "id": "1778378308023"
+    },
+    {
+      "email": "lloyd@gmail.com",
+      "password": "$2b$10$08Biu6sEl6QC0lzrnRZ6x.OH6X3fv8VstIQ/6C60qHnWRNE6Zfyn2",
+      "id": "1778379100882"
+    },
+    {
+      "email": "joey@gmail.com",
+      "password": "$2b$10$cOZtWgjhD3X3c1kfXUtsWupuMyk6n5gBRnOO36vl17tJ46u/DjtpS",
+      "id": "1778383561296"
+    },
+    {
+      "email": "joeyotero00@gmail.com",
+      "password": "$2b$10$Hl6PyuOHjcNnFUQQ6CTKZuYNt50PtLylfqdtC074OlBRVnde5rD5m",
+      "id": "1778425625700"
+    },
+    {
+      "email": "OTERO@gmail.com",
+      "password": "$2b$10$qvyvrXGiEUTBiEljNpy4KuzvFG2XgVX/I62n0CSR6qKvwO6JHKybu",
+      "id": "1778467686524"
+    },
+    {
+      "email": "cindy@gmail.com",
+      "password": "$2b$10$mYPVQZQDbbtldyyp/uQ68em3XkjFt0bs1kWvy84wNchEGqGkAa33C",
+      "id": "1778471937622"
+    },
+    {
+      "email": "dave@gmail.com",
+      "password": "$2b$10$w95eP.SPFRfbpEOSP5CKt.9PH03HXW.TQ8VxmjJHvTY90xVbVHAPa",
+      "id": "1778482956070"
+    },
+    {
+      "email": "jonathan@gmail.com",
+      "password": "$2b$10$jlay55XmS7PgOlBhXlj52.q3MZqE92kDfUcqWY3chjCTi2Vq7aL1u",
+      "id": "1778485266129"
+    },
+    {
+      "email": "luna12@gmail.com",
+      "password": "$2b$10$qG.WLDmo4RaYBvoqpX1aoOfyZLBXCfCNPsDlz3kAo2bPoVTBgMa/i",
+      "id": "1778513638800"
+    }
+  ],
+  "links": [
+    {
+      "title": "tik",
+      "url": "https://www.tiktok.com/",
+      "userId": "1778115662966",
+      "id": "zmYPjSOjRII"
+    },
+    {
+      "title": "yt",
+      "url": "https://www.youtube.com/",
+      "userId": "1778115781017",
+      "id": "hn4Mtv40ZuU"
+    },
+    {
+      "title": "wifi vendo",
+      "url": "http://10.0.0.1/client?page=dashboard",
+      "userId": "1778122525711",
+      "id": "KPDSDMgNzPM"
+    },
+    {
+      "title": "pin",
+      "url": "https://ph.pinterest.com/pin/1102044971300048302/",
+      "userId": "1778122525711",
+      "id": "j4AGBJE135M"
+    },
+    {
+      "title": "youtube",
+      "url": "https://www.youtube.com/",
+      "userId": "1778129544303",
+      "id": "abjwL32As4Q"
+    },
+    {
+      "title": "yt",
+      "url": "https://www.youtube.com/",
+      "userId": "1778149158603",
+      "id": "ca7Zr3_wmQY"
+    },
+    {
+      "title": "",
+      "url": "",
+      "userId": "1778149158603",
+      "id": "BHfBINawodo"
+    },
+    {
+      "title": "try",
+      "url": "http://127.0.0.1:5500/frontend/index.html",
+      "userId": "1778144036807",
+      "id": "JXz1mlLD-zQ"
+    },
+    {
+      "title": "rfrf",
+      "url": "http://127.0.0.1:5500/frontend/index.html",
+      "userId": "1778116528656",
+      "id": "0pfvI3TpFFA"
+    },
+    {
+      "title": "okok",
+      "url": "http://127.0.0.1:5500/frontend/index.html",
+      "userId": "1778116528656",
+      "id": "ElTiIa9gT0E"
+    },
+    {
+      "title": "okok",
+      "url": "http://127.0.0.1:5500/frontend/index.html",
+      "userId": "1778425625700",
+      "id": "rstFFvs2K_Q"
+    },
+    {
+      "title": "tiktok",
+      "url": " https://www.tiktok",
+      "userId": "1778116001439",
+      "id": "ODR2uYvE_Y8"
+    },
+    {
+      "title": "yt",
+      "url": "https://www.youtube.com/",
+      "userId": "1778116001439",
+      "id": "FvEcrxI3_ME"
+    },
+    {
+      "title": "anime ",
+      "url": "https://www.bilibili.tv/en/play/37603/377066?bstar_from=bstar-web.pgc-video-detail.episode.auto76",
+      "userId": "1778116001439",
+      "id": "0YNIr-MdEEo"
+    },
+    {
+      "title": "pinteres",
+      "url": "https://ph.pinterest.com/pin/973340538191265728/",
+      "userId": "1778116001439",
+      "id": "JOaecdM0V4Q"
+    },
+    {
+      "title": "ai",
+      "url": "https://chatgpt.com/",
+      "userId": "1778116001439",
+      "id": "4aUgXo3NzII"
+    },
+    {
+      "title": "fb",
+      "url": "https://www.facebook.com/?ref=homescreenpwa",
+      "userId": "1778116001439",
+      "id": "FASyDokJN7w"
+    },
+    {
+      "title": "yt",
+      "url": "https://www.youtube.com/",
+      "userId": "1778482956070",
+      "id": "2tq-07OJH-c"
+    },
+    {
+      "title": "pin",
+      "url": "https://ph.pinterest.com/",
+      "userId": "1778485266129",
+      "id": "aFeGirhJi4c"
+    },
+    {
+      "title": "top up",
+      "url": "https://gogogo.game/en-ph/",
+      "userId": "1778116001439",
+      "id": "XrqmY7ynGHg"
+    },
+    {
+      "title": "ai",
+      "url": "https://chatgpt.com/c/69fb5e7a-fd1c-8322-9e28-02c869f660b5",
+      "userId": "1778513638800",
+      "id": "Unhs7bEd5jg"
+    },
+    {
+      "title": "ai chat",
+      "url": "https://chatgpt.com/c/6a013575-29c0-83ec-a1e3-c03b66d7246d",
+      "userId": "1778115662966",
+      "id": "aVB0KP_7onw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

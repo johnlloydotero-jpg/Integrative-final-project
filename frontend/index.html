@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkSaver</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <body>
+
+<div id="editProfileModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <h2>Edit Profile</h2>
+
+    <img id="editProfilePreview"
+         src="assets/default-profile.png"
+         class="profile-big">
+
+    <input type="file"
+           accept="image/*"
+           onchange="changeProfile(event)">
+
+    <button onclick="closeEditProfile()">Close</button>
+
+  </div>
+
+</div>
+
+<!-- 🎥 BACKGROUND -->
+<video autoplay muted loop id="bg-video">
+  <source src="assets/background (2).mp4" type="video/mp4">
+</video>
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+  <div class="logo">
+    <img src="assets/logo.png" alt="LinkSaver Logo">
+  </div>
+
+  <div class="nav">
+
+    <!-- GUEST -->
+    <div id="guestButtons">
+      <button onclick="showLogin()">Login</button>
+      <button onclick="showRegister()">Register</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardBar" class="hidden">
+
+      <div class="dash-profile" onclick="toggleDropdown()">
+
+  <img id="profilePreview"
+       src="assets/default-profile.png"
+       class="profile-pic">
+
+  <div class="user-info">
+    <span id="usernameDisplay">User</span>
+    <small id="emailDisplay">email@gmail.com</small>
+  </div>
+
+</div>
+
+      <!-- DROPDOWN -->
+      <div id="profileDropdown" class="dropdown hidden">
+
+        <button onclick="openEditProfile()">✏️ Edit Profile</button>
+  <button onclick="showAddSection()">➕ Add Link</button>
+  <button onclick="showSavedSection()">📂 My Links</button>
+  <button onclick="logout()">🚪 Logout</button>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="card">
+    <h2>Login</h2>
+
+    <input type="email" id="loginEmail" placeholder="Email">
+
+    <div class="password-box">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <span onclick="togglePassword('loginPassword', this)">👁️</span>
+    </div>
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="registerBox" class="card hidden">
+    <h2>Register</h2>
+
+    <input type="email" id="regEmail" placeholder="Email">
+
+    <div class="password-box">
+      <input type="password" id="regPassword" placeholder="Password">
+      <span onclick="togglePassword('regPassword', this)">👁️</span>
+    </div>
+
+    <button onclick="register()">Create Account</button>
+  </div>
+
+  <!-- ADD LINK -->
+  <div id="addSection" class="card hidden">
+    <h2>Add Link</h2>
+
+    <input type="text" id="title" placeholder="Title">
+    <input type="text" id="url" placeholder="URL">
+
+    <button onclick="addLink()">Save Link</button>
+  </div>
+
+  <!-- SAVED LINKS -->
+  <!-- SAVED LINKS -->
+<div id="savedSection" class="card hidden">
+
+  <h2>Link Collection</h2>
+
+  <!-- 🔎 SEARCH BAR -->
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔎 Search your links..."
+    onkeyup="searchLinks()"
+  >
+
+  <div id="links"></div>
+
+</div>
+
+</div>
+
+<!-- LOADER -->
+<div id="loader" class="loader hidden"></div>
+
+<!-- ALERT -->
+<div id="alertBox" class="alert hidden"></div>
+
+<script src="app.js"></script>
+
+<script>
+
+function toggleDropdown() {
+  document.getElementById("profileDropdown")
+    .classList.toggle("hidden");
+}
+
+/* =========================
+   LOGIN (DASHBOARD MODE)
+========================= */
+async function login() {
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  const res = await fetch(`${AUTH}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("currentUser", email);
+
+    // UI SWITCH
+    document.getElementById("guestButtons").classList.add("hidden");
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("registerBox").classList.add("hidden");
+
+    document.getElementById("dashboardBar").classList.remove("hidden");
+    document.getElementById("addSection").classList.remove("hidden");
+
+    // PROFILE LOAD
+    const savedProfile =
+      localStorage.getItem(`profile_${email}`);
+
+    if (savedProfile) {
+      document.getElementById("profilePreview").src =
+        savedProfile;
+    }
+
+    const name = email.split("@")[0];
+
+document.getElementById("usernameDisplay").textContent = name;
+document.getElementById("emailDisplay").textContent = email;
+
+    showSavedSection();
+
+  } else {
+    alert("Login failed");
+  }
+}
+
+/* =========================
+   LOGOUT
+========================= */
+function logout() {
+
+  localStorage.removeItem("token");
+  localStorage.removeItem("currentUser");
+
+  document.getElementById("dashboardBar").classList.add("hidden");
+  document.getElementById("guestButtons").classList.remove("hidden");
+
+  document.getElementById("loginBox").classList.remove("hidden");
+
+  document.getElementById("addSection").classList.add("hidden");
+  document.getElementById("savedSection").classList.add("hidden");
+}
+
+/* =========================
+   UI
+========================= */
+function showAddSection() {
+  document.getElementById("addSection").classList.remove("hidden");
+  document.getElementById("savedSection").classList.add("hidden");
+}
+
+function showSavedSection() {
+  document.getElementById("addSection").classList.add("hidden");
+  document.getElementById("savedSection").classList.remove("hidden");
+  if (typeof loadLinks === "function") loadLinks();
+}
+
+function togglePassword(id, icon) {
+  const input = document.getElementById(id);
+
+  input.type = input.type === "password" ? "text" : "password";
+  icon.textContent = input.type === "password" ? "👁️" : "🙈";
+}
+
+function showLogin() {
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("registerBox").classList.add("hidden");
+}
+
+function showRegister() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.remove("hidden");
+}
+
+/* =========================
+   AUTO LOAD
+========================= */
+window.onload = function () {
+
+  const token = localStorage.getItem("token");
+  const currentUser = localStorage.getItem("currentUser");
+
+  if (token) {
+
+    document.getElementById("guestButtons").classList.add("hidden");
+    document.getElementById("dashboardBar").classList.remove("hidden");
+
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("registerBox").classList.add("hidden");
+
+    document.getElementById("addSection").classList.remove("hidden");
+
+    if (currentUser) {
+
+      const savedProfile =
+        localStorage.getItem(`profile_${currentUser}`);
+
+      if (savedProfile) {
+        document.getElementById("profilePreview").src =
+          savedProfile;
+      }
+
+      document.getElementById("usernameDisplay").textContent =
+        currentUser.split("@")[0];
+    }
+
+    showSavedSection();
+  }
+}
+
+</script>
+
+</body>
+</html>
